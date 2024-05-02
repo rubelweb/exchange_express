@@ -8,5 +8,6 @@ export interface State {
     fromCurrency: string
     toCurrency: string
     amount: number
-    convertedAmount: number | null
+    convertedAmount: number | null,
+    error: null
 }

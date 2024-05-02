@@ -1,58 +1,65 @@
 'use client'
-
-import React, { useEffect, useReducer } from 'react';
-import { fetchExchangeRates } from '@/utils/getExchangeRate';
-import { reducer } from '@/app/components/ExchangeReducer/ExchangeReducer';
-import { initialState } from '@/app/components/Constants/Constants';
+import React, { useEffect, useReducer } from 'react'
+import { fetchExchangeRates } from '@/utils/getExchangeRate'
+import { reducer } from '@/app/components/ExchangeReducer/ExchangeReducer'
+import { initialState } from '@/app/components/Constants/Constants'
 
 export default function ExchangeRates() {
-    const [state, dispatch] = useReducer(reducer, initialState);
+    const [state, dispatch] = useReducer(reducer, initialState)
 
     useEffect(() => {
         async function fetchRates() {
             try {
-                const data = await fetchExchangeRates(state.fromCurrency);
-                dispatch({ type: 'SET_EXCHANGE_RATES', payload: data });
-            } catch (error) {
-                console.error('Error fetching exchange rates:', error);
+                const exchangeRates = await fetchExchangeRates(
+                    state.fromCurrency
+                )
+                dispatch({ type: 'SET_EXCHANGE_RATES', payload: exchangeRates })
+            } catch (error: any) {
+                dispatch({
+                    type: 'FETCH_EXCHANGE_RATES_FAILURE',
+                    payload: error.message
+                })
             }
         }
 
-        fetchRates();
-    }, [state.fromCurrency]);
+        fetchRates()
+    }, [state.fromCurrency])
 
     useEffect(() => {
         if (
             state.exchangeRates &&
             state.exchangeRates.rates[state.toCurrency]
         ) {
-            const rate = state.exchangeRates.rates[state.toCurrency];
+            const rate = state.exchangeRates.rates[state.toCurrency]
             dispatch({
                 type: 'SET_CONVERTED_AMOUNT',
-                payload: state.amount * rate,
-            });
+                payload: state.amount * rate
+            })
         }
-    }, [state.amount, state.exchangeRates, state.toCurrency]);
+    }, [state.amount, state.exchangeRates, state.toCurrency])
 
     const handleFromCurrencyChange = (
         event: React.ChangeEvent<HTMLSelectElement>
     ) => {
-        dispatch({ type: 'SET_FROM_CURRENCY', payload: event.target.value });
-    };
+        dispatch({ type: 'SET_FROM_CURRENCY', payload: event.target.value })
+    }
 
     const handleToCurrencyChange = (
         event: React.ChangeEvent<HTMLSelectElement>
     ) => {
-        dispatch({ type: 'SET_TO_CURRENCY', payload: event.target.value });
-    };
+        dispatch({ type: 'SET_TO_CURRENCY', payload: event.target.value })
+    }
 
     const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const value = parseFloat(event.target.value);
-        dispatch({ type: 'SET_AMOUNT', payload: value });
-    };
+        const value = parseFloat(event.target.value)
+        dispatch({ type: 'SET_AMOUNT', payload: value })
+    }
 
     return state.exchangeRates ? (
         <div>
+            <div>
+                <h2>Date: {state.exchangeRates.date}</h2>
+            </div>
             <div>
                 <label htmlFor="fromCurrency">From:</label>
                 <select
@@ -119,5 +126,5 @@ export default function ExchangeRates() {
                     : ''}
             </div>
         </div>
-    ) : null;
+    ) : null
 }

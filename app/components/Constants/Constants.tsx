@@ -6,4 +6,5 @@ export const initialState: State = {
     toCurrency: 'SEK',
     amount: 1,
     convertedAmount: null,
+    error: null
 }
