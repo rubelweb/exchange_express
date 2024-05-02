@@ -1,86 +1,88 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
-import { fetchExchangeRates } from '@/utils/api/getExchangeRate'
+import React, { useEffect, useReducer } from 'react';
+import { fetchExchangeRates } from '@/utils/getExchangeRate';
+import { reducer } from '@/app/components/ExchangeReducer/ExchangeReducer';
+import { initialState } from '@/app/components/Constants/Constants';
 
-interface ExchangeRatesProps {
-    baseCurrency: string
-}
-
-export default function ExchangeRatesComponent({
-    baseCurrency
-}: ExchangeRatesProps) {
-    const [exchangeRates, setExchangeRates] = useState<any>(null)
-    const [fromCurrency, setFromCurrency] = useState<string>(baseCurrency)
-    const [toCurrency, setToCurrency] = useState<string>('EUR')
-    const [amount, setAmount] = useState<number>(1)
-    const [convertedAmount, setConvertedAmount] = useState<number | null>(null)
+export default function ExchangeRates() {
+    const [state, dispatch] = useReducer(reducer, initialState);
 
     useEffect(() => {
         async function fetchRates() {
             try {
-                const data = await fetchExchangeRates(fromCurrency)
-                setExchangeRates(data)
+                const data = await fetchExchangeRates(state.fromCurrency);
+                dispatch({ type: 'SET_EXCHANGE_RATES', payload: data });
             } catch (error) {
-                console.error('Error fetching exchange rates:', error)
+                console.error('Error fetching exchange rates:', error);
             }
         }
 
-        fetchRates()
-    }, [fromCurrency])
+        fetchRates();
+    }, [state.fromCurrency]);
 
     useEffect(() => {
-        if (exchangeRates && exchangeRates.rates[toCurrency]) {
-            const rate = exchangeRates.rates[toCurrency]
-            setConvertedAmount(amount * rate)
+        if (
+            state.exchangeRates &&
+            state.exchangeRates.rates[state.toCurrency]
+        ) {
+            const rate = state.exchangeRates.rates[state.toCurrency];
+            dispatch({
+                type: 'SET_CONVERTED_AMOUNT',
+                payload: state.amount * rate,
+            });
         }
-    }, [amount, exchangeRates, toCurrency])
+    }, [state.amount, state.exchangeRates, state.toCurrency]);
 
     const handleFromCurrencyChange = (
         event: React.ChangeEvent<HTMLSelectElement>
     ) => {
-        setFromCurrency(event.target.value)
-    }
+        dispatch({ type: 'SET_FROM_CURRENCY', payload: event.target.value });
+    };
 
     const handleToCurrencyChange = (
         event: React.ChangeEvent<HTMLSelectElement>
     ) => {
-        setToCurrency(event.target.value)
-    }
+        dispatch({ type: 'SET_TO_CURRENCY', payload: event.target.value });
+    };
 
     const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const value = parseFloat(event.target.value)
-        setAmount(value)
-    }
+        const value = parseFloat(event.target.value);
+        dispatch({ type: 'SET_AMOUNT', payload: value });
+    };
 
-    return exchangeRates ? (
+    return state.exchangeRates ? (
         <div>
             <div>
                 <label htmlFor="fromCurrency">From:</label>
                 <select
                     id="fromCurrency"
-                    value={fromCurrency}
+                    value={state.fromCurrency}
                     onChange={handleFromCurrencyChange}
                 >
-                    {Object.keys(exchangeRates.rates).map((currency, index) => (
-                        <option key={index} value={currency}>
-                            {currency}
-                        </option>
-                    ))}
+                    {Object.keys(state.exchangeRates.rates).map(
+                        (currency, index) => (
+                            <option key={index} value={currency}>
+                                {currency}
+                            </option>
+                        )
+                    )}
                 </select>
             </div>
             <div>
                 <label htmlFor="toCurrency">To:</label>
                 <select
                     id="toCurrency"
-                    value={toCurrency}
+                    value={state.toCurrency}
                     onChange={handleToCurrencyChange}
                 >
-                    {Object.keys(exchangeRates.rates).map((currency, index) => (
-                        <option key={index} value={currency}>
-                            {currency}
-                        </option>
-                    ))}
+                    {Object.keys(state.exchangeRates.rates).map(
+                        (currency, index) => (
+                            <option key={index} value={currency}>
+                                {currency}
+                            </option>
+                        )
+                    )}
                 </select>
             </div>
             <div>
@@ -88,7 +90,7 @@ export default function ExchangeRatesComponent({
                 <input
                     type="number"
                     id="amount"
-                    value={amount}
+                    value={state.amount}
                     onChange={handleAmountChange}
                 />
             </div>
@@ -101,19 +103,21 @@ export default function ExchangeRatesComponent({
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{fromCurrency}</td>
-                        <td>{exchangeRates.rates[fromCurrency]}</td>
+                        <td>{state.fromCurrency}</td>
+                        <td>{state.exchangeRates.rates[state.fromCurrency]}</td>
                     </tr>
                     <tr>
-                        <td>{toCurrency}</td>
-                        <td>{exchangeRates.rates[toCurrency]}</td>
+                        <td>{state.toCurrency}</td>
+                        <td>{state.exchangeRates.rates[state.toCurrency]}</td>
                     </tr>
                 </tbody>
             </table>
             <div>
                 <strong>Converted Amount:</strong>{' '}
-                {convertedAmount !== null ? convertedAmount.toFixed(2) : ''}
+                {state.convertedAmount !== null
+                    ? state.convertedAmount.toFixed(2)
+                    : ''}
             </div>
         </div>
-    ) : null
+    ) : null;
 }

@@ -4,7 +4,7 @@ export default function Home() {
     return (
         <main>
             <h2 style={{ fontWeight: 'bold' }}>Currency Converter</h2>
-            <ExchangeRates baseCurrency="USD" />
+            <ExchangeRates />
         </main>
     )
 }
