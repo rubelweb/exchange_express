@@ -1,12 +1,8 @@
 import React from 'react';
+import { CurrencySelectorProps } from '@/utils/types'
 
-interface Props {
-  currencies: string[];
-  selectedCurrency: string;
-  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-}
 
-const CurrencySelector: React.FC<Props> = ({
+const CurrencySelector: React.FC<CurrencySelectorProps> = ({
   currencies,
   selectedCurrency,
   onChange,

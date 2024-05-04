@@ -1,10 +1,5 @@
 import React from 'react';
-
-interface ExchangeRateTableProps {
-  rates: { [key: string]: number };
-  fromCurrency: string;
-  toCurrency: string;
-}
+import { ExchangeRateTableProps } from '@/utils/types';
 
 const ExchangeRateTable: React.FC<ExchangeRateTableProps> = ({ rates, fromCurrency, toCurrency }) => {
   return (

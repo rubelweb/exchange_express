@@ -1,11 +1,7 @@
 import React from 'react';
+import { AmountInputProps } from '@/utils/types';
 
-interface Props {
-  amount: number;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-const AmountInput: React.FC<Props> = ({ amount, onChange }) => {
+const AmountInput: React.FC<AmountInputProps> = ({ amount, onChange }) => {
   return <input type="number" value={amount} onChange={onChange} />;
 };
 
