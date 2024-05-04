@@ -9,5 +9,6 @@ export interface State {
     toCurrency: string
     amount: number
     convertedAmount: number | null,
-    error: null
+    error: null,
+    isLoading: false
 }

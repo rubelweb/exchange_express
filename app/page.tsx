@@ -1,10 +1,9 @@
-import ExchangeRates from '@/app/components/ExchangeRates/ExchangeRates'
+import AppContainer from '@/app/components/AppContainer/AppContainer'
 
 export default function Home() {
     return (
         <main>
-            <h2 style={{ fontWeight: 'bold' }}>Currency Converter</h2>
-            <ExchangeRates />
+            <AppContainer />
         </main>
     )
 }
