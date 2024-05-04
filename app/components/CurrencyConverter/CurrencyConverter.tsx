@@ -62,12 +62,12 @@ const CurrencyConverter = () => {
     }
 
     return (
-        <div>
+        <div className="bg-teal-100 p-8 rounded-lg shadow-lg">
             {error && <ErrorMessage message={error} />}
             {isLoading && <LoadingSpinner />}
             {exchangeRates && (
                 <>
-                    <div>
+                    <div className="font-bold mb-2">
                         <h2>Date: {exchangeRates.date}</h2>
                     </div>
                     <div>
@@ -86,8 +86,7 @@ const CurrencyConverter = () => {
                             onChange={handleToCurrencyChange}
                         />
                     </div>
-                    <div>
-                        <label htmlFor="amount">Amount:</label>
+                    <div className="mt-3">
                         <AmountInput
                             amount={amount}
                             onChange={handleAmountChange}
@@ -98,11 +97,15 @@ const CurrencyConverter = () => {
                         fromCurrency={fromCurrency}
                         toCurrency={toCurrency}
                     />
-                    <div>
-                        <strong>Converted Amount:</strong>{' '}
-                        {convertedAmount !== null
-                            ? convertedAmount.toFixed(2)
-                            : ''}
+                    <div className="mt-3 flex items-center">
+                        <div className="text-lg font-bold text-teal-900 mr-2">
+                            Converted Amount:
+                        </div>
+                        <span className="text-base text-teal-900">
+                            {convertedAmount !== null
+                                ? convertedAmount.toFixed(2)
+                                : ''}
+                        </span>
                     </div>
                 </>
             )}
