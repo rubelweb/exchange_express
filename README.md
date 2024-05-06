@@ -60,7 +60,7 @@ To configure Jest to support JSX syntax, make sure to update the `"jsx"` propert
     {
     "compilerOptions": {
         "jsx": "react"
-    }
+      }
     }
 
 ### Run the test:
