@@ -4,6 +4,8 @@ Exchange_Express is a simple and efficient Currency Converter web application bu
 
 ![alt text](image.png)
 
+## [Live Demo](https://exchange-express-ffztcwt2v-rubelwebs-projects.vercel.app/)
+
 ## Features
 
 -   **Easy Conversion:** Convert between various currencies effortlessly.
@@ -22,7 +24,7 @@ Exchange_Express is a simple and efficient Currency Converter web application bu
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/rubelweb/exchange_express.git
+    git clone (https://github.com/rubelweb/exchange_express.git)
     ```
 
 2. Navigate into the project directory:
@@ -67,7 +69,7 @@ To configure Jest to support JSX syntax, make sure to update the `"jsx"` propert
 
 ## Credits
 
--   Exchange rates provided by [https://api.exchangerate-api.com].
+-   Exchange rates provided by [Exchangerate](https://api.exchangerate-api.com).
 
 ## Deploy on Vercel
 
