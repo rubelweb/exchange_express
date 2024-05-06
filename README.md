@@ -55,18 +55,19 @@ Exchange_Express is a simple and efficient Currency Converter web application bu
 
 To configure Jest to support JSX syntax, make sure to update the `"jsx"` property in your `tsconfig.json` file as follows:
 
-`````json
-{
-  "compilerOptions": {
-    "jsx": "react"
-  }
-}
+    ````json
+    {
+    "compilerOptions": {
+        "jsx": "react"
+    }
+    }
+    ````
 
-Run tests:
+### Run the test:
 
     ```bash
     npm test
-    ````
+    ```
 
 ## Credits
 
@@ -77,4 +78,3 @@ Run tests:
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-`````
