@@ -55,19 +55,15 @@ Exchange_Express is a simple and efficient Currency Converter web application bu
 
 To configure Jest to support JSX syntax, make sure to update the `"jsx"` property in your `tsconfig.json` file as follows:
 
-    ````json
     {
     "compilerOptions": {
         "jsx": "react"
     }
     }
-    ````
 
 ### Run the test:
 
-    ```bash
     npm test
-    ```
 
 ## Credits
 
