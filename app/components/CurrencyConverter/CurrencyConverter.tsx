@@ -26,6 +26,7 @@ const CurrencyConverter = () => {
     useEffect(() => {
         const fetchRates = async () => {
             try {
+                dispatch({ type: 'FETCH_EXCHANGE_RATES_REQUEST' })
                 const data = await fetchExchangeRates(fromCurrency)
                 dispatch({ type: 'SET_EXCHANGE_RATES', payload: data })
             } catch (error) {
@@ -33,6 +34,8 @@ const CurrencyConverter = () => {
                     type: 'FETCH_EXCHANGE_RATES_FAILURE',
                     payload: 'Failed to fetch currency rates'
                 })
+            } finally {
+                dispatch({ type: 'FETCH_EXCHANGE_RATES_COMPLETE' })
             }
         }
 
@@ -56,8 +59,7 @@ const CurrencyConverter = () => {
         dispatch({ type: 'SET_TO_CURRENCY', payload: event.target.value })
     }
 
-    const handleAmountChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const value = parseFloat(event.target.value)
+    const handleAmountChange = (value: number) => {
         dispatch({ type: 'SET_AMOUNT', payload: value })
     }
 

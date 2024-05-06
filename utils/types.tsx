@@ -1,27 +1,27 @@
 export interface AmountInputProps {
-    amount: number;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  }
+    amount: number
+    onChange: (value: number) => void
+}
 
 export interface CurrencySelectorProps {
-    currencies: string[];
-    selectedCurrency: string;
-    onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  }
+    currencies: string[]
+    selectedCurrency: string
+    onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
+}
 
 export interface ErrorMessageProps {
-    message: string;
-  }
+    message: string
+}
 
 export interface ExchangeRateTableProps {
-    rates: { [key: string]: number };
-    fromCurrency: string;
-    toCurrency: string;
-  }
+    rates: { [key: string]: number }
+    fromCurrency: string
+    toCurrency: string
+}
 
 export interface Action {
     type: string
-    payload: any
+    payload?: any
 }
 
 export interface State {
@@ -29,7 +29,7 @@ export interface State {
     fromCurrency: string
     toCurrency: string
     amount: number
-    convertedAmount: number | null,
-    error: null,
-    isLoading: false
+    convertedAmount: number | null
+    error: string | null
+    isLoading: boolean
 }

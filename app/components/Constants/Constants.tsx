@@ -7,5 +7,5 @@ export const initialState: State = {
     amount: 1,
     convertedAmount: null,
     error: null,
-    isLoading: false
+    isLoading: true
 }

@@ -8,11 +8,11 @@ const CurrencySelector: React.FC<CurrencySelectorProps> = ({
 }) => {
     return (
         <div className="flex items-center">
-            <label htmlFor="currency" className="mr-2 text-teal-700">
+            <label htmlFor="currency-selector" className="mr-2 text-teal-700">
                 Select Currency:
             </label>
             <select
-                id="currency"
+                id="currency-selector"
                 className="bg-white border border-teal-300 rounded p-2"
                 value={selectedCurrency}
                 onChange={onChange}

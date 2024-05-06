@@ -1,33 +1,78 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Exchange_Express
 
-## Getting Started
+Exchange_Express is a simple and efficient Currency Converter web application built using Next.js, TypeScript, and Tailwind CSS. It allows users to quickly convert between different currencies with real-time exchange rates.
 
-First, run the development server:
+![alt text](image.png)
+
+## Features
+
+- **Easy Conversion:** Convert between various currencies effortlessly.
+- **Real-time Exchange Rates:** Fetches the latest exchange rates from a reliable API.
+- **Test Coverage:** Comprehensive test coverage with Jest ensures code reliability.
+
+## Technologies Used
+
+- **Next.js:** A React framework for building server-side rendered and static web applications.
+- **TypeScript:** Adds static typing to JavaScript for improved code quality and developer productivity.
+- **Tailwind CSS:** A utility-first CSS framework for rapid UI development with minimal CSS code.
+- **Jest:** A delightful JavaScript testing framework for unit and integration testing.
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/rubelweb/exchange_express.git
+   ```
+
+2. Navigate into the project directory:
+
+   ```bash
+   cd Exchange_Express
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+## Usage
+
+1. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+2. Open your browser and visit [http://localhost:3000](http://localhost:3000).
+
+3. Enter the amount to convert, select the source and target currencies, and click "Convert".
+
+
+## Testing
+
+## Testing Configuration
+
+To configure Jest to support JSX syntax, make sure to update the `"jsx"` property in your `tsconfig.json` file as follows:
+
+```json
+{
+  "compilerOptions": {
+    "jsx": "react"
+  }
+}
+
+Run the test:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm test
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Credits
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Exchange rates provided by [https://api.exchangerate-api.com].
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 
