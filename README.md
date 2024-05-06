@@ -24,7 +24,7 @@ Exchange_Express is a simple and efficient Currency Converter web application bu
 1. Clone the repository:
 
     ```bash
-    git clone (https://github.com/rubelweb/exchange_express.git)
+    git clone https://github.com/rubelweb/exchange_express.git
     ```
 
 2. Navigate into the project directory:
