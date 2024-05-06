@@ -100,7 +100,7 @@ const CurrencyConverter = () => {
                         toCurrency={toCurrency}
                     />
                     <div className="mt-3 flex items-center">
-                        <div className="text-lg font-bold text-teal-900 mr-2">
+                        <div className="text-lg font-bold text-teal-900 mr-1">
                             Converted Amount:
                         </div>
                         <span className="text-base text-teal-900 mr-1">
