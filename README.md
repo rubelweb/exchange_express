@@ -64,9 +64,15 @@ To configure Jest to support JSX syntax, make sure to update the `"jsx"` propert
 
 Run the test:
 
+<<<<<<< HEAD
     ```bash
     npm test
     ````
+=======
+```bash
+npm test
+````
+>>>>>>> a192fc8ad656f22e9f73ca02d19d4fca980e15f1
 
 ## Credits
 
