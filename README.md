@@ -4,7 +4,7 @@ Exchange_Express is a simple and efficient Currency Converter web application bu
 
 ![alt text](image.png)
 
-## [Live Demo](https://exchange-express-ffztcwt2v-rubelwebs-projects.vercel.app/)
+## [Live Demo](https://exchange-express.vercel.app/)
 
 ## Features
 
