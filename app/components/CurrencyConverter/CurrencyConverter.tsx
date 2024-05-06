@@ -103,11 +103,12 @@ const CurrencyConverter = () => {
                         <div className="text-lg font-bold text-teal-900 mr-2">
                             Converted Amount:
                         </div>
-                        <span className="text-base text-teal-900">
+                        <span className="text-base text-teal-900 mr-1">
                             {convertedAmount !== null
                                 ? convertedAmount.toFixed(2)
                                 : ''}
                         </span>
+                        {toCurrency}
                     </div>
                 </>
             )}
