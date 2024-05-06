@@ -2,7 +2,7 @@
 
 Exchange_Express is a simple and efficient Currency Converter web application built using Next.js, TypeScript, and Tailwind CSS. It allows users to quickly convert between different currencies with real-time exchange rates.
 
-![alt text](img.png)
+![alt text](image.png)
 
 ## [Live Demo](https://exchange-express.vercel.app/)
 
